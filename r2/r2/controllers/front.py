@@ -558,10 +558,10 @@ class FrontController(RedditController):
     def GET_newreddit(self, name):
         """Create a subreddit form"""
         VNotInTimeout().run(action_name="pageview", details_text="newreddit")
-        title = _('create a subreddit')
+        title = _('create a community')
         captcha = Captcha() if c.user.needs_captcha() else None
         content = CreateSubreddit(name=name or '', captcha=captcha)
-        res = FormPage(_("create a subreddit"),
+        res = FormPage(_("create a community"),
                        content=content,
                        captcha=captcha,
                        ).render()
