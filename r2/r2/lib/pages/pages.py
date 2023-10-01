@@ -717,7 +717,7 @@ class Reddit(Templated):
                                      'community.')
                     elif c.site.type == 'gold_restricted':
                         subtitle = _('Anyone can view or comment, but only '
-                                     'Reddit Gold members can post in this '
+                                     'Yakker Gold members can post in this '
                                      'community.')
                     ps.append(SideBox(title=_('Submissions restricted'),
                                       css_class="submit",
@@ -807,7 +807,7 @@ class Reddit(Templated):
                     c.user.can_create_subreddit):
                 subtitles = get_funny_translated_string("create_subreddit", 2)
                 data_attrs = {'event-action': 'createsubreddit'}
-                ps.append(SideBox(_('Create your own subreddit'),
+                ps.append(SideBox(_('Create your own community'),
                            '/subreddits/create', 'create',
                            subtitles=subtitles,
                            data_attrs=data_attrs,
@@ -1089,33 +1089,33 @@ class RedditFooter(CachedTemplate):
         self.nav = [
             NavMenu([
                     NamedButton("blog", False, dest="/blog"),
-                    OffsiteButton("about", "https://about.reddit.com/"),
+                    OffsiteButton("about", "https://support.roxxonone.com/en/articles/8430286-about-yakker"),
                     NamedButton("source_code", False, dest="/code"),
                     NamedButton("advertising", False),
-                    NamedButton("jobs", False),
+                    OffsiteButton("Careers", "https://careers.roxxonglobal.com/yakker/"),
                 ],
                 title = _("about"),
                 type = "flat_vert",
                 separator = ""),
 
             NavMenu([
-                    NamedButton("rules", False),
-                    OffsiteButton(_("FAQ"), "https://reddit.zendesk.com"),
-                    NamedButton("wiki", False),
-                    NamedButton("reddiquette", False, dest="/wiki/reddiquette"),
-                    NamedButton("transparency", False, dest="/wiki/transparency"),
-                    NamedButton("contact", False),
+                    OffsiteButton(_("Site Rules"), "https://support.roxxonone.com/en/articles/8430277-content-policy"),
+                    OffsiteButton(_("FAQ"), "https://support.roxxonone.com/en/articles/8430285-yakker-faqs"),
+                    OffsiteButton(_("Etiquette"), "https://support.roxxonone.com/en/articles/8430284-yakker-etiquette"),
+                    OffsiteButton(_("Terms of Service"), "https://support.roxxonone.com/en/articles/8430283-terms-of-service"),
+                    OffsiteButton(_("Transparency"), "https://support.roxxonone.com/en/articles/8430282-transparency-policy"),
+                    OffsiteButton(_("Contact Us"), "https://support.roxxonone.com/en/"),
                 ],
                 title = _("help"),
                 type = "flat_vert",
                 separator = ""),
 
             NavMenu([
-                    OffsiteButton(_("Reddit for iPhone"),
-                        "https://itunes.apple.com/us/app/reddit-the-official-app/id1064216828?mt=8"),
-                    OffsiteButton(_("Reddit for Android"),
-                        "https://play.google.com/store/apps/details?id=com.reddit.frontpage"),
-                    OffsiteButton(_("mobile website"), "https://m.reddit.com"),
+                    OffsiteButton(_("Yakker for iPhone"),
+                        "https://go.twtr.one/iphone"),
+                    OffsiteButton(_("Yakker for Android"),
+                        "https://go.twtr.one/android"),
+                    OffsiteButton(_("mobile website"), "https://m.yakker.app"),
                     NamedButton("buttons", False),
                 ],
                 title = _("apps & tools"),
@@ -1123,8 +1123,8 @@ class RedditFooter(CachedTemplate):
                 separator = ""),
 
             NavMenu([
-                    NamedButton("gold", False, dest="/gold/about", css_class="buygold"),
-                    OffsiteButton(_("redditgifts"), "//redditgifts.com"),
+                    OffsiteButton(_("Yakker Gold"), "https://yakker.app/gold"),
+                    OffsiteButton(_("Privacy Panel"), "https://privacy.roxxonlegal.com/opt-out"),
                 ],
                 title = _("<3"),
                 type = "flat_vert",
@@ -2502,15 +2502,15 @@ class ProfileBar(Templated):
 
             if not self.viewing_self:
                 self.goldlink = "/gold?goldtype=gift&recipient=" + user.name
-                self.giftmsg = _("give reddit gold to %(user)s to show "
+                self.giftmsg = _("give yakker gold to %(user)s to show "
                                  "your appreciation") % {'user': user.name}
             elif not user.gold:
-                self.goldlink = "/gold/about"
-                self.giftmsg = _("get extra features and help support reddit "
-                                 "with a reddit gold subscription")
+                self.goldlink = "/gold"
+                self.giftmsg = _("get extra features and help support yakker "
+                                 "with a yakker gold subscription")
             elif gold_days_left < 7 and not user.gold_will_autorenew:
-                self.goldlink = "/gold/about"
-                self.giftmsg = _("renew your reddit gold")
+                self.goldlink = "/gold"
+                self.giftmsg = _("renew your yakker gold")
 
             if not self.viewing_self:
                 self.is_friend = user._id in c.user.friends
@@ -2520,12 +2520,12 @@ class ProfileBar(Templated):
 
 
 class ServerSecondsBar(Templated):
-    my_message = _("you have helped pay for *%(time)s* of reddit server time.")
-    their_message = _("/u/%(user)s has helped pay for *%%(time)s* of reddit server "
+    my_message = _("you have helped pay for *%(time)s* of yakker server time.")
+    their_message = _("/u/%(user)s has helped pay for *%%(time)s* of yakker server "
                       "time.")
 
     my_gift_message = _("gifts on your behalf have helped pay for *%(time)s* of "
-                        "reddit server time.")
+                        "yakker server time.")
     their_gift_message = _("gifts on behalf of /u/%(user)s have helped pay for "
                            "*%%(time)s* of reddit server time.")
 
@@ -2606,7 +2606,7 @@ class WelcomeBar(InfoBar):
         if messages:
             message = random.choice(messages).split(" / ")
         else:
-            message = (_("reddit is a platform for internet communities"),
+            message = (_("yakker is a platform for internet communities"),
                        _("where your votes shape what the world is talking about."))
         InfoBar.__init__(self, message=message)
 
@@ -2835,7 +2835,7 @@ class SubredditTopBar(CachedTemplate):
                                            css_class = 'bottom-option',
                                            dest = '/subreddits/'))
         return SubredditMenu(drop_down_buttons,
-                             title = _('my subreddits'),
+                             title = _('my communities'),
                              type = 'srdrop')
 
     def subscribed_reddits(self):
@@ -5543,13 +5543,13 @@ class ListingChooser(Templated):
             self.add_item("other", _("everything"),
                           path="/me/f/all",
                           extra_class="gold-perks",
-                          description=_("from all subreddits"))
+                          description=_("from all communities"))
         else:
             self.add_item("other", _("everything"), site=All,
-                          description=_("from all subreddits"))
+                          description=_("from all communities"))
         if c.user_is_loggedin and c.user.is_moderator_somewhere:
             self.add_item("other", _("moderating"), site=Mod,
-                          description=_("subreddits you mod"))
+                          description=_("communities you mod"))
 
         self.add_item("other", _("saved"), path='/user/%s/saved' % c.user.name)
 

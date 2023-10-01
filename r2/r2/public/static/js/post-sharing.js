@@ -60,7 +60,7 @@
     '<div class="post-sharing-email-form post-sharing-form" ref="$emailForm">' +
       '<p class="post-sharing-label">' +
         '<span ref="$emailFormEmailLabel">' + _.escape(r._('Share via email as %(username)s').format({ username: r.config.logged })) + '</span>' +
-        '<span ref="$emailFormPMLabel">' + _.escape(r._('Share via private message on reddit as %(username)s').format({ username: r.config.logged })) + '</span>' +
+        '<span ref="$emailFormPMLabel">' + _.escape(r._('Share via private message on Yakker as %(username)s').format({ username: r.config.logged })) + '</span>' +
       '</p>' +
       '<div class="c-form-group">' +
         '<input class="post-sharing-recipient-input c-form-control" ' +
@@ -473,7 +473,7 @@
       if (r.config.logged && !r.config.user_in_timeout) {
         shareOptions.push({
           name: 'reddit-pm',
-          tooltip: r._('Private Message a Friend on Reddit'),
+          tooltip: r._('Private Message a Friend on Yakker'),
         });
       }
 
