@@ -96,7 +96,7 @@ try participating in other communities on yakker for a little while first before
   </%utils:line_field>
 
   <%utils:line_field title="${_('sidebar')}" css_class="usertext"
-                     description="${_('shown in the sidebar of your subreddit. 5120 characters max.')}">
+                     description="${_('shown in the sidebar of your community. 5120 characters max.')}">
     %if thing.site and thing.site.description:
      ${UserText(None, text=thing.site.description or "", editable=True, creating=True, name="description", have_form=False)}
     %else:
@@ -164,10 +164,10 @@ try participating in other communities on yakker for a little while first before
                   (not thing.site and (c.user.gold or c.user.gold_charter)))
           if is_gold_only:
               hover_title = "[!]"
-              hover_text = _('If you switch this subreddit to another type, you will not be able to switch back to "gold only" without the assistance of an admin')
+              hover_text = _('If you switch this community to another type, you will not be able to switch back to "gold only" without the assistance of an admin')
           else:
               hover_title = "[?]"
-              hover_text = unsafe(capture(_md, 'BETA: Subreddits can be created as "gold only" during creation by a user that has gold. You can find more info about this feature [here](/gold/about#gold-only-subreddits)'))
+              hover_text = unsafe(capture(_md, 'BETA: Communities can be created as "gold only" during creation by a user that has gold. You can find more info about this feature [here](/gold/about#gold-only-subreddits)'))
       %>
       ${utils.radio_type('type', "gold_only", _("gold only"),
               _("only reddit gold members can view and submit"),
@@ -232,7 +232,7 @@ try participating in other communities on yakker for a little while first before
     </div>
     <div class="usertext-edit">
     <div class="delete-field">
-    <label for="wiki_edit_karma">${_('Subreddit karma required to edit and create wiki pages:')}</label>
+    <label for="wiki_edit_karma">${_('Community karma required to edit and create wiki pages:')}</label>
         %if thing.site:
             <input id="wiki_edit_karma" type="text" name="wiki_edit_karma" 
                    value="${thing.site.wiki_edit_karma}"/>
@@ -318,7 +318,7 @@ try participating in other communities on yakker for a little while first before
                  %endif
           >
           <label for="allow_top">
-            ${_("allow this subreddit to be included /r/all as well as the default and trending lists")}
+            ${_("allow this community to be included /r/all as well as the default and trending lists")}
           </label>
         </li>
         <li>
@@ -538,7 +538,7 @@ try participating in other communities on yakker for a little while first before
               $('#sr-autocomplete').val('');
             })
             .fail(function() {
-              $('.SUBREDDIT_NOEXIST.field-sr').text(r._("that subreddit doesn't exist")).show();
+              $('.SUBREDDIT_NOEXIST.field-sr').text(r._("that community doesn't exist")).show();
             });
           }
 
@@ -603,7 +603,7 @@ try participating in other communities on yakker for a little while first before
       </li>
       %endif
       <li>
-        <p><label>${_('color')}</label> <span class="gray">${_('used as a thematic color for your subreddit on mobile')}</span></p>
+        <p><label>${_('color')}</label> <span class="gray">${_('used as a thematic color for your community on mobile')}</span></p>
         <ul class="colors">
           %for color, color_name in thing.color_options.iteritems():
             %if color:
