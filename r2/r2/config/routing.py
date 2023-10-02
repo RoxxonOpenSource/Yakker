@@ -323,7 +323,7 @@ def make_map(config):
     mc('/rules', controller='redirect', action='redirect',
         dest='/help/contentpolicy')
     mc('/faq', controller='redirect', action='redirect',
-       dest='https://support.roxxonone.com/')
+       dest='https://support.roxxonone.com/en/articles/8430285-yakker-faqs')
 
     mc('/wiki/create/*page', controller='wiki', action='wiki_create')
     mc('/wiki/edit/*page', controller='wiki', action='wiki_revise')
