@@ -137,7 +137,7 @@ function clone_reddit_service_repo {
     clone_reddit_repo $1 reddit/reddit-service-$1
 }
 
-clone_reddit_repo reddit reddit/reddit
+clone_reddit_repo reddit RoxxonOpenSource/Yakker
 clone_reddit_repo i18n reddit/reddit-i18n
 clone_reddit_service_repo websockets
 clone_reddit_service_repo activity
@@ -421,7 +421,7 @@ frontend frontend
     mode http
 
     bind 0.0.0.0:80
-    bind 127.0.0.1:8080
+    bind 0.0.0.0:8080
 
     timeout client 24h
     option forwardfor except 127.0.0.1
