@@ -136,7 +136,7 @@ def make_map(config):
     mc('/awards/received', controller='front', action='received_award')
 
     mc('/i18n', controller='redirect', action='redirect',
-       dest='https://www.reddit.com/r/i18n')
+       dest='https://yakker.app/r/i18n')
     mc('/feedback', controller='redirect', action='redirect',
        dest='/contact')
     mc('/contact', controller='frontunstyled', action='contact_us')
@@ -323,7 +323,7 @@ def make_map(config):
     mc('/rules', controller='redirect', action='redirect',
         dest='/help/contentpolicy')
     mc('/faq', controller='redirect', action='redirect',
-       dest='https://reddit.zendesk.com/')
+       dest='https://support.roxxonone.com/')
 
     mc('/wiki/create/*page', controller='wiki', action='wiki_create')
     mc('/wiki/edit/*page', controller='wiki', action='wiki_revise')
@@ -462,7 +462,7 @@ def make_map(config):
        controller="mediaembed", action="mediaembed", credentials=None)
 
     mc('/code', controller='redirect', action='redirect',
-       dest='http://github.com/reddit/')
+       dest='http://github.com/RoxxonOpenSource/Yakker')
 
     mc('/socialite', controller='redirect', action='redirect',
        dest='https://addons.mozilla.org/firefox/addon/socialite/')
